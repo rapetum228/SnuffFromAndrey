@@ -25,16 +25,18 @@ namespace SnuffFromAndrey
 
         private void ButtonShot_Clicked(object sender, EventArgs e)
         {
+            int x = _viewModel.XConstant;
+            int y = _viewModel.YConstant;
             Image image = new Image();
             image.Source = ImageSource.FromResource("SnuffFromAndrey.Images.Bullet.png");
             flexim.Children.Add(image,
                 Constraint.RelativeToParent((parent) =>
                 {
-                    return 0;  // установка координаты X
+                    return x;  // установка координаты X
                 }),
             Constraint.RelativeToParent((parent) =>
             {
-                return 0; // установка координаты Y
+                return y; // установка координаты Y
             }),
             Constraint.Constant(15), // установка ширины
             Constraint.Constant(15)  // установка высоты

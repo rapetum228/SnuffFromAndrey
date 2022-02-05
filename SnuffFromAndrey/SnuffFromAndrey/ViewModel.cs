@@ -34,17 +34,6 @@ namespace SnuffFromAndrey
 
         }
 
-        private Thickness _marginBorders;
-        public Thickness MarginBorders
-        {
-            get { return _marginBorders; }
-            set
-            {
-                _marginBorders = value;
-                OnPropertyChanged(nameof(MarginBorders));
-            }
-        }
-
         private Constraint _xConstraint;
         public Constraint XConstraint
         {
@@ -89,6 +78,25 @@ namespace SnuffFromAndrey
             }
         }
 
+        private int _actualShotDirection;
+        public int ActualShotDirection
+        {
+            get { return _actualShotDirection; }
+            set
+            {
+                _actualShotDirection = value;
+                OnPropertyChanged(nameof(ActualShotDirection));
+            }
+        }
+
+        enum ShotDirection
+        {
+            Up,
+            Left,
+            Right,
+            Down
+        }
+        /*
         private int _top;
         public int Top
         {
@@ -130,6 +138,19 @@ namespace SnuffFromAndrey
             }
         }
 
+
+        private Thickness _marginBorders;
+        public Thickness MarginBorders
+        {
+            get { return _marginBorders; }
+            set
+            {
+                _marginBorders = value;
+                OnPropertyChanged(nameof(MarginBorders));
+            }
+        }
+
+        */
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propName)
         {
