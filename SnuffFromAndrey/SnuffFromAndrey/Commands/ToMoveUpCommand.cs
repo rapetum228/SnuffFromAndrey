@@ -16,9 +16,8 @@ namespace SnuffFromAndrey.Commands
 
         public override void Execute(object parameter)
         {
-            _viewModel.Top -= 30;
-            _viewModel.MarginBorders = new Thickness(_viewModel.Left,
-               _viewModel.Top, _viewModel.Right, _viewModel.Bottom);
+            _viewModel.YConstant -= 30;
+            _viewModel.YConstraint = Constraint.Constant(_viewModel.YConstant);
         }
     }
 

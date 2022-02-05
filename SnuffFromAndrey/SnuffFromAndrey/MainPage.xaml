@@ -10,25 +10,25 @@
         <conv:MarginConverter x:Key="MarginConv" />
     </ContentPage.Resources>
     <StackLayout >
-        <StackLayout HeightRequest="500" Background="Wheat" Margin="10" >
-            <Image x:Name="MainHero" Source="{local:ImageResource SnuffFromAndrey.Images.Hero.PNG}"
-               IsVisible="true"
-               WidthRequest="45"
-                   Margin="{Binding MarginBorders}">
-                <!--Margin="{Binding MarginBorders}"-->
-
-                <!--<Image.Margin>
-                    <MultiBinding Converter="{StaticResource MarginConv}">
-                        <Binding Mode="TwoWay" Path="Left"/>
-                        <Binding Mode="TwoWay" Path="Top"/>
-                        <Binding Mode="TwoWay" Path="Right"/>
-                        <Binding Mode="TwoWay" Path="Bottom"/>
-                    </MultiBinding>
-                </Image.Margin>-->
+        <RelativeLayout HeightRequest="500"
+                     Background="Wheat" 
+                     Margin="0"
+                     x:Name="flexim">
+            <Image x:Name="MainHero" 
+                   Source="{local:ImageResource SnuffFromAndrey.Images.Hero.PNG}"
+                   IsVisible="true"
+                   WidthRequest="45"
+                   RelativeLayout.XConstraint="{Binding XConstraint}"
+                   RelativeLayout.YConstraint="{Binding YConstraint}">
             </Image>
-        </StackLayout>
+        </RelativeLayout>
 
-        <FlexLayout HeightRequest="250" BackgroundColor="CadetBlue" Direction="Row" Margin="30,10" AlignItems="Center" JustifyContent="Center">
+        <FlexLayout HeightRequest="250" 
+                    BackgroundColor="CadetBlue" 
+                    Direction="Row" 
+                    Margin="0" 
+                    AlignItems="Center" 
+                    JustifyContent="Center">
             <Button x:Name="ButtonRight"
                     WidthRequest="75" 
                     HeightRequest="75"
@@ -36,35 +36,46 @@
                     BackgroundColor="Blue"
                     BorderColor="Black"
                     BorderWidth="5"
-                    Command="{Binding ToMoveRight}"/>
+                    Command="{Binding ToMoveRight}"
+                    Margin="0,0,20,0"/>
             <StackLayout>
                 <Button x:Name="ButtonUp"
-                    WidthRequest="75" 
-                    HeightRequest="75"
-                    CornerRadius="30"
-                    BackgroundColor="Green"
-                    BorderColor="Black"
-                    BorderWidth="5"
-                    Margin="0,0,0,30"
-                    Command="{Binding ToMoveUp}"/>
+                        WidthRequest="75" 
+                        HeightRequest="75"
+                        CornerRadius="30"
+                        BackgroundColor="Blue"
+                        BorderColor="Black"
+                        BorderWidth="5"
+                        Margin="0,0,0,0"
+                        Command="{Binding ToMoveUp}"/>
+                <Button x:Name="ButtonShot"
+                        WidthRequest="75" 
+                        HeightRequest="75"
+                        CornerRadius="30"
+                        BackgroundColor="Red"
+                        BorderColor="Black"
+                        BorderWidth="5"
+                        Margin="0,5,0,0"
+                        Clicked="ButtonShot_Clicked"/>
                 <Button x:Name="ButtonDown"
-                    WidthRequest="75" 
-                    HeightRequest="75"
-                    CornerRadius="30"
-                    BackgroundColor="Red"
-                    BorderColor="Black"
-                    BorderWidth="5"
-                    Margin="0,30,0,0"
-                    Command="{Binding ToMoveDown}"/>
+                        WidthRequest="75" 
+                        HeightRequest="75"
+                        CornerRadius="30"
+                        BackgroundColor="Blue"
+                        BorderColor="Black"
+                        BorderWidth="5"
+                        Margin="0,5,0,0"
+                        Command="{Binding ToMoveDown}"/>
             </StackLayout>
             <Button x:Name="ButtonLeft"
                     WidthRequest="75" 
                     HeightRequest="75"
                     CornerRadius="30"
-                    BackgroundColor="White"
+                    BackgroundColor="Blue"
                     BorderColor="Black"
                     BorderWidth="5"
-                    Command="{Binding ToMoveLeft}"/>
+                    Command="{Binding ToMoveLeft}"
+                    Margin="20,0,0,0"/>
         </FlexLayout>
 
 

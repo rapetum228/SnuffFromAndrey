@@ -23,28 +23,22 @@ namespace SnuffFromAndrey
             BindingContext = _viewModel;
         }
 
-        private void ButtonDown_Clicked(object sender, EventArgs e)
+        private void ButtonShot_Clicked(object sender, EventArgs e)
         {
-            Top += 30;
-            MainHero.Margin = new Thickness(Left, Top, Right, Bottom);
-        }
-
-        private void ButtonLeft_Clicked(object sender, EventArgs e)
-        {
-            Right -= 30;
-            MainHero.Margin = new Thickness(Left, Top, Right, Bottom);
-        }
-
-        private void ButtonRight_Clicked(object sender, EventArgs e)
-        {
-            Right += 30;
-            MainHero.Margin = new Thickness(Left, Top, Right, Bottom);
-        }
-
-        private void ButtonUp_Clicked(object sender, EventArgs e)
-        {
-            Top -= 30;
-            MainHero.Margin = new Thickness(Left, Top, Right, Bottom);
+            Image image = new Image();
+            image.Source = ImageSource.FromResource("SnuffFromAndrey.Images.Bullet.png");
+            flexim.Children.Add(image,
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return 0;  // установка координаты X
+                }),
+            Constraint.RelativeToParent((parent) =>
+            {
+                return 0; // установка координаты Y
+            }),
+            Constraint.Constant(15), // установка ширины
+            Constraint.Constant(15)  // установка высоты
+        );
         }
     }
 }

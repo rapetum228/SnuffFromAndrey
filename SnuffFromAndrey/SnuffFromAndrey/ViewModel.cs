@@ -23,10 +23,14 @@ namespace SnuffFromAndrey
             ToMoveDown = new ToMoveDownCommand(this);
             ToMoveLeft = new ToMoveLeftCommand(this);
             ToMoveRight = new ToMoveRightCommand(this);
-            Top = 0;
-            Bottom = 0;
-            Left = 0;
-            Right = 0;
+            XConstraint = Constraint.RelativeToParent((parent) =>
+            {
+                return 0;  // установка координаты X
+            });
+            YConstraint = Constraint.RelativeToParent((parent) =>
+            {
+                return 0;  // установка координаты Y
+            });
 
         }
 
@@ -41,6 +45,49 @@ namespace SnuffFromAndrey
             }
         }
 
+        private Constraint _xConstraint;
+        public Constraint XConstraint
+        {
+            get { return _xConstraint; }
+            set
+            {
+                _xConstraint = value;
+                OnPropertyChanged(nameof(XConstraint));
+            }
+        }
+
+        private Constraint _YConstraint;
+        public Constraint YConstraint
+        {
+            get { return _YConstraint; }
+            set
+            {
+                _YConstraint = value;
+                OnPropertyChanged(nameof(YConstraint));
+            }
+        }
+
+
+        private int _xConstant;
+        public int XConstant
+        {
+            get { return _xConstant; }
+            set
+            {
+                _xConstant = value;
+                OnPropertyChanged(nameof(XConstant));
+            }
+        }
+        private int _yConstant;
+        public int YConstant
+        {
+            get { return _yConstant; }
+            set
+            {
+                _yConstant = value;
+                OnPropertyChanged(nameof(YConstant));
+            }
+        }
 
         private int _top;
         public int Top
