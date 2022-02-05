@@ -19,10 +19,8 @@ namespace SnuffFromAndrey
         public MainPage()
         {
             InitializeComponent();
-            Top = 0;
-            Bottom = 0;
-            Left = 0;
-            Right = 0;
+            _viewModel = new ViewModel();
+            BindingContext = _viewModel;
         }
 
         private void ButtonDown_Clicked(object sender, EventArgs e)

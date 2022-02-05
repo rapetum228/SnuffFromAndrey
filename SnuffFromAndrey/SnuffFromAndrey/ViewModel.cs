@@ -9,18 +9,24 @@ using Xamarin.Forms;
 
 namespace SnuffFromAndrey
 {
-    internal class ViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged
     {
 
-        public ICommand ToMove { get; set; }
+        public ICommand ToMoveUp { get; set; }
+        public ICommand ToMoveDown { get; set; }
+        public ICommand ToMoveLeft { get; set; }
+        public ICommand ToMoveRight { get; set; }
+
         public ViewModel()
         {
-            ToMove = new ToMoveCommand();
-            Left = 110;
-            Right = 120;
-            Top = 130;
-            Bottom = 100;
-            MarginBorders = new Thickness(Top, Bottom, Left, Right);
+            ToMoveUp = new ToMoveUpCommand(this);
+            ToMoveDown = new ToMoveDownCommand(this);
+            ToMoveLeft = new ToMoveLeftCommand(this);
+            ToMoveRight = new ToMoveRightCommand(this);
+            Top = 0;
+            Bottom = 0;
+            Left = 0;
+            Right = 0;
 
         }
 

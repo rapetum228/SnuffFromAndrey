@@ -4,7 +4,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="SnuffFromAndrey.MainPage"
              xmlns:local="clr-namespace:SnuffFromAndrey"
-             xmlns:conv="clr-namespace:SnuffFromAndrey.Converters" x:DataType="local:ViewModel">
+             xmlns:conv="clr-namespace:SnuffFromAndrey.Converters">
 
     <ContentPage.Resources>
         <conv:MarginConverter x:Key="MarginConv" />
@@ -13,9 +13,10 @@
         <StackLayout HeightRequest="500" Background="Wheat" Margin="10" >
             <Image x:Name="MainHero" Source="{local:ImageResource SnuffFromAndrey.Images.Hero.PNG}"
                IsVisible="true"
-               WidthRequest="45">
-               <!--Margin="{Binding MarginBorders}"-->
-               
+               WidthRequest="45"
+                   Margin="{Binding MarginBorders}">
+                <!--Margin="{Binding MarginBorders}"-->
+
                 <!--<Image.Margin>
                     <MultiBinding Converter="{StaticResource MarginConv}">
                         <Binding Mode="TwoWay" Path="Left"/>
@@ -26,7 +27,7 @@
                 </Image.Margin>-->
             </Image>
         </StackLayout>
-        
+
         <FlexLayout HeightRequest="250" BackgroundColor="CadetBlue" Direction="Row" Margin="30,10" AlignItems="Center" JustifyContent="Center">
             <Button x:Name="ButtonRight"
                     WidthRequest="75" 
@@ -35,7 +36,7 @@
                     BackgroundColor="Blue"
                     BorderColor="Black"
                     BorderWidth="5"
-                    Clicked="ButtonRight_Clicked"/>
+                    Command="{Binding ToMoveRight}"/>
             <StackLayout>
                 <Button x:Name="ButtonUp"
                     WidthRequest="75" 
@@ -45,8 +46,8 @@
                     BorderColor="Black"
                     BorderWidth="5"
                     Margin="0,0,0,30"
-                    Clicked="ButtonUp_Clicked"/>
-            <Button x:Name="ButtonDown"
+                    Command="{Binding ToMoveUp}"/>
+                <Button x:Name="ButtonDown"
                     WidthRequest="75" 
                     HeightRequest="75"
                     CornerRadius="30"
@@ -54,7 +55,7 @@
                     BorderColor="Black"
                     BorderWidth="5"
                     Margin="0,30,0,0"
-                    Clicked="ButtonDown_Clicked"/>
+                    Command="{Binding ToMoveDown}"/>
             </StackLayout>
             <Button x:Name="ButtonLeft"
                     WidthRequest="75" 
@@ -63,9 +64,9 @@
                     BackgroundColor="White"
                     BorderColor="Black"
                     BorderWidth="5"
-                    Clicked="ButtonLeft_Clicked"/>
+                    Command="{Binding ToMoveLeft}"/>
         </FlexLayout>
-        
+
 
     </StackLayout>
 
