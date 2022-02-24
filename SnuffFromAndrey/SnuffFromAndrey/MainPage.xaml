@@ -4,25 +4,21 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="SnuffFromAndrey.MainPage"
              xmlns:local="clr-namespace:SnuffFromAndrey"
-             xmlns:conv="clr-namespace:SnuffFromAndrey.Converters">
+             xmlns:conv="clr-namespace:SnuffFromAndrey.Converters"
+             xmlns:models ="clr-namespace:SnuffFromAndrey.Models" >
 
     <ContentPage.Resources>
         <conv:MarginConverter x:Key="MarginConv" />
     </ContentPage.Resources>
     <StackLayout >
-        <RelativeLayout HeightRequest="500"
-                     Background="Wheat" 
-                     Margin="0"
-                     x:Name="flexim">
-            <Image x:Name="MainHero" 
-                   Source="{local:ImageResource SnuffFromAndrey.Images.Hero.PNG}"
-                   IsVisible="true"
-                   WidthRequest="45"
-                   RelativeLayout.XConstraint="{Binding XConstraint}"
-                   RelativeLayout.YConstraint="{Binding YConstraint}">
-            </Image>
-        </RelativeLayout>
 
+        <models:BattleField HeightRequest="500"
+                            Background="Wheat" 
+                            Margin="0"
+                            x:Name="BloodBattleField">
+            
+        </models:BattleField>
+        
         <FlexLayout HeightRequest="250" 
                     BackgroundColor="CadetBlue" 
                     Direction="Row" 

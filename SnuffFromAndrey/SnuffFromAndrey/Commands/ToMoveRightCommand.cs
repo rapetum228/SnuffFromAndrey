@@ -14,8 +14,7 @@ namespace SnuffFromAndrey.Commands
         }
         public override void Execute(object parameter)
         {
-            _viewModel.XConstant -= 30;
-            _viewModel.XConstraint = Constraint.Constant(_viewModel.XConstant);
+            _viewModel.BattleField.MoveCharacterHorizontally(-30, _viewModel.Hero);
         }
     }
 }
