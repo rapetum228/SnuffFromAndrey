@@ -36,7 +36,7 @@ namespace SnuffFromAndrey.Models
         public bool FlyBullet()
         {
             SelectDirection();
-            return SelfDestruction();
+            return SelfDestruction(CheckToKill());
         }
 
         private void SelectDirection()
@@ -65,16 +65,31 @@ namespace SnuffFromAndrey.Models
 
         }
 
-        private bool SelfDestruction()
+        private bool SelfDestruction(bool isKiled)
         {
-            if (XOffset > _battleField.Width || XOffset < 0 || YOffset > _battleField.Height || YOffset < 0)
+            bool conditionEndFly = XOffset > _battleField.Width || XOffset < 0 || YOffset > _battleField.Height || YOffset < 0 || isKiled;
+            if (conditionEndFly)
             {
                 _battleField.RemoveBullet(this);
                 return false;
             } 
             else
                 return true;
-             
+        }
+
+        private bool CheckToKill()
+        {
+            if (_battleField.Enemies.Count == 0)
+            {
+                _battleField.AddEnemies();
+            }
+            Enemy enemy = _battleField.Enemies.Find(e => e.XOffset < XOffset + 10 && e.YOffset < YOffset+10);
+            if (enemy != null)
+            {
+                _battleField.RevomeEnemy(enemy);
+                return true;
+            }
+            return false;    
         }
     }
 }

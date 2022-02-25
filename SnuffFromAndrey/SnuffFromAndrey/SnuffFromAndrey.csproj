@@ -12,11 +12,13 @@
 
   <ItemGroup>
     <None Remove="Images\Bullet.png" />
+    <None Remove="Images\DogEnemy.png" />
     <None Remove="Images\Hero.PNG" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\Bullet.png" />
+    <EmbeddedResource Include="Images\DogEnemy.png" />
     <EmbeddedResource Include="Images\Hero.PNG" />
   </ItemGroup>
 
