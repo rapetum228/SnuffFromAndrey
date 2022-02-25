@@ -5,10 +5,14 @@ using Xamarin.Forms;
 
 namespace SnuffFromAndrey.Models
 {
-    public class Hero : Character
+    public class Hero : Unit
     {
-        public Hero()
+        public ShotDirection CurrentShotDirection { get; set; }
+        private BattleField _battleField;
+        public Hero(BattleField battleField)
         {
+            _battleField = battleField;
+
             Face = new Image
             {
                 Source = ImageSource.FromResource("SnuffFromAndrey.Images.Hero.PNG"),
@@ -24,6 +28,30 @@ namespace SnuffFromAndrey.Models
             });
         }
 
-       
+        public void MoveCharacterVertically(int offset)
+        {
+            YOffset += offset;
+            if (_battleField.Height - 15 <= YOffset || YOffset <= -10)
+            {
+                YOffset -= offset;
+                return;
+            }
+
+            YConstraint = Constraint.Constant(YOffset);
+            BattleField.SetYConstraint(Face, YConstraint);
+        }
+
+        public void MoveCharacterHorizontally(int offset)
+        {
+            XOffset += offset;
+            if (_battleField.Width - 15 <= XOffset || XOffset <= -10)
+            {
+                XOffset -= offset;
+                return;
+            }
+
+            XConstraint = Constraint.Constant(XOffset);
+            BattleField.SetXConstraint(Face, XConstraint);
+        }
     }
 }

@@ -8,9 +8,14 @@ namespace SnuffFromAndrey.Models
 {
     public static class ViewExtensions
     {
-        public static void AddHero(this IRelativeList<View> children, Hero hero)
+        public static void AddUnit(this IRelativeList<View> children, Unit unit)
         {
-            children.Add(hero.Face, hero.XConstraint, hero.YConstraint);
+            children.Add(unit.Face, unit.XConstraint, unit.YConstraint);
+        }
+
+        public static void RemoveUnit(this IRelativeList<View> children, Unit unit)
+        {
+            children.Remove(unit.Face);
         }
     }
 }

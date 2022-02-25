@@ -7,31 +7,27 @@ namespace SnuffFromAndrey.Models
 {
     public class BattleField: RelativeLayout
     {
-        
         public Hero Hero { get; private set; }
         public List<Enemy> Enemies { get; set; }
 
         public BattleField()
         {
-            Hero = new Hero();
-            Children.AddHero(Hero);
+            Hero = new Hero(this);
+            Children.AddUnit(Hero);
             SetXConstraint(Hero.Face, Hero.XConstraint);
             Enemies = new List<Enemy>();
         }
 
-        public void MoveCharacterVertically(int offset, Character character)
+        public void AddBullet(Bullet bullet)
         {
-
-            character.YOffset += offset;
-            character.YConstraint = Constraint.Constant(character.YOffset );
-            SetYConstraint(character.Face, character.YConstraint);
+            Children.AddUnit(bullet);
         }
 
-        public void MoveCharacterHorizontally(int offset, Character character)
+        public void RemoveBullet(Bullet bullet)
         {
-            character.XOffset += offset;
-            character.XConstraint = Constraint.Constant(character.XOffset);
-            SetXConstraint(character.Face, character.XConstraint);
+            Children.RemoveUnit(bullet);
         }
+       
+        
     }
 }

@@ -4,8 +4,11 @@ using System.Text;
 
 namespace SnuffFromAndrey.Models
 {
-    public class Enemy: Unit
+    public enum ShotDirection
     {
-
+        Up,
+        Left,
+        Right, 
+        Down
     }
 }

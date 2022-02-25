@@ -52,7 +52,7 @@
                         BorderColor="Black"
                         BorderWidth="5"
                         Margin="0,5,0,0"
-                        Clicked="ButtonShot_Clicked"/>
+                        Command="{Binding Shot}"/>
                 <Button x:Name="ButtonDown"
                         WidthRequest="75" 
                         HeightRequest="75"

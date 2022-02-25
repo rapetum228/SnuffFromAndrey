@@ -16,7 +16,8 @@ namespace SnuffFromAndrey.Commands
 
         public override void Execute(object parameter)
         {
-            _viewModel.BattleField.MoveCharacterVertically(-30, _viewModel.Hero);
+            _viewModel.Hero.MoveCharacterVertically(-30);
+            _viewModel.Hero.CurrentShotDirection = Models.ShotDirection.Up;
         }
     }
 

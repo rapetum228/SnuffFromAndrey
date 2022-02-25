@@ -14,7 +14,8 @@ namespace SnuffFromAndrey.Commands
         }
         public override void Execute(object parameter)
         {
-            _viewModel.BattleField.MoveCharacterHorizontally(-30, _viewModel.Hero);
+            _viewModel.Hero.MoveCharacterHorizontally(-30);
+            _viewModel.Hero.CurrentShotDirection = Models.ShotDirection.Right;
         }
     }
 }
