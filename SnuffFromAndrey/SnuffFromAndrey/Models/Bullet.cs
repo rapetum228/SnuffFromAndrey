@@ -9,18 +9,19 @@ namespace SnuffFromAndrey.Models
     {
         private ShotDirection _shotDirection;
         private const int _velocity = 10;
-        private BattleField _battleField;
-        public Bullet(BattleField battleField)
+       
+        public Bullet(BattleField battleField) : base(battleField)
         {
-            _battleField = battleField;
-            XOffset = _battleField.Hero.XOffset;
-            YOffset = _battleField.Hero.YOffset;
+            XOffset = _battleField.Hero.XOffset + GetAdditionalOffset();
+            YOffset = _battleField.Hero.YOffset + GetAdditionalOffset();
             _shotDirection = _battleField.Hero.CurrentShotDirection;
+            FaceSize = 15;
 
             Face = new Image
             {
                 Source = ImageSource.FromResource("SnuffFromAndrey.Images.Bullet.png"),
-                WidthRequest = 15,
+                WidthRequest = FaceSize,
+                HeightRequest = FaceSize
             };
             XConstraint = Constraint.RelativeToParent((parent) =>
             {
@@ -35,6 +36,7 @@ namespace SnuffFromAndrey.Models
 
         public bool FlyBullet()
         {
+            double h = _battleField.Width;
             SelectDirection();
             return SelfDestruction(CheckToKill());
         }
@@ -79,17 +81,25 @@ namespace SnuffFromAndrey.Models
 
         private bool CheckToKill()
         {
-            if (_battleField.Enemies.Count == 0)
-            {
-                _battleField.AddEnemies();
-            }
-            Enemy enemy = _battleField.Enemies.Find(e => e.XOffset < XOffset + 10 && e.YOffset < YOffset+10);
+           
+            Enemy enemy = _battleField.Enemies.Find(e => Math.Abs(e.XOffset - XOffset) < 20 && Math.Abs(e.YOffset - YOffset) <  20);
             if (enemy != null)
             {
+                if (_battleField.Enemies.Count == 0)
+                {
+                    _battleField.AddEnemies();
+                }
                 _battleField.RevomeEnemy(enemy);
                 return true;
             }
             return false;    
+        }
+
+        private int GetAdditionalOffset()
+        {
+            int faceSize = _battleField.Hero.FaceSize;
+            int offset = faceSize / 2;
+            return offset;
         }
     }
 }

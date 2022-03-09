@@ -13,13 +13,17 @@
   <ItemGroup>
     <None Remove="Images\Bullet.png" />
     <None Remove="Images\DogEnemy.png" />
+    <None Remove="Images\FunnySmileEnemy.png" />
     <None Remove="Images\Hero.PNG" />
+    <None Remove="Images\SmileEnemy.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\Bullet.png" />
     <EmbeddedResource Include="Images\DogEnemy.png" />
+    <EmbeddedResource Include="Images\FunnySmileEnemy.png" />
     <EmbeddedResource Include="Images\Hero.PNG" />
+    <EmbeddedResource Include="Images\SmileEnemy.png" />
   </ItemGroup>
 
   <ItemGroup>

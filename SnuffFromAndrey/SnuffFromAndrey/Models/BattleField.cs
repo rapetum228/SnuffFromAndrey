@@ -7,16 +7,26 @@ namespace SnuffFromAndrey.Models
 {
     public class BattleField: RelativeLayout
     {
+        private static BattleField _battleField;
         public Hero Hero { get; private set; }
         public List<Enemy> Enemies { get; set; }
         public int NumberRound { get; set; }
         public BattleField()
         {
+            HeightRequest = 540;
+            WidthRequest = 430;
             Hero = new Hero(this);
             Children.AddUnit(Hero);
-            
             Enemies = new List<Enemy>();
             AddEnemies();
+        }
+
+        public static BattleField GetInstance()
+        {
+            if(_battleField is null)
+                _battleField = new BattleField();
+
+            return _battleField;
         }
 
         public void AddBullet(Bullet bullet)

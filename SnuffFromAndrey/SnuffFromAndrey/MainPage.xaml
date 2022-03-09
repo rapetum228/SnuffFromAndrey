@@ -9,14 +9,23 @@
 
     <ContentPage.Resources>
         <conv:MarginConverter x:Key="MarginConv" />
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="WidthRequest" Value="75"/>
+                <Setter Property="HeightRequest" Value="75"/>
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="BackgroundColor" Value="Blue"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BorderWidth" Value="5"/>
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
+    
     <StackLayout >
 
-        <models:BattleField HeightRequest="500"
-                            Background="Wheat" 
+        <models:BattleField Background="Wheat" 
                             Margin="0"
                             x:Name="BloodBattleField">
-            
         </models:BattleField>
         
         <FlexLayout HeightRequest="250" 
@@ -26,50 +35,26 @@
                     AlignItems="Center" 
                     JustifyContent="Center">
             <Button x:Name="ButtonRight"
-                    WidthRequest="75" 
-                    HeightRequest="75"
-                    CornerRadius="30"
-                    BackgroundColor="Blue"
-                    BorderColor="Black"
-                    BorderWidth="5"
+                    Style="{StaticResource buttonStyle}"
                     Command="{Binding ToMoveRight}"
                     Margin="0,0,20,0"/>
             <StackLayout>
                 <Button x:Name="ButtonUp"
-                        WidthRequest="75" 
-                        HeightRequest="75"
-                        CornerRadius="30"
-                        BackgroundColor="Blue"
-                        BorderColor="Black"
-                        BorderWidth="5"
+                        Style="{StaticResource buttonStyle}"
                         Margin="0,0,0,0"
                         Command="{Binding ToMoveUp}"/>
                 <Button x:Name="ButtonShot"
-                        WidthRequest="75" 
-                        HeightRequest="75"
-                        CornerRadius="30"
+                        Style="{StaticResource buttonStyle}"
                         BackgroundColor="Red"
-                        BorderColor="Black"
-                        BorderWidth="5"
                         Margin="0,5,0,0"
                         Command="{Binding Shot}"/>
                 <Button x:Name="ButtonDown"
-                        WidthRequest="75" 
-                        HeightRequest="75"
-                        CornerRadius="30"
-                        BackgroundColor="Blue"
-                        BorderColor="Black"
-                        BorderWidth="5"
+                       Style="{StaticResource buttonStyle}"
                         Margin="0,5,0,0"
                         Command="{Binding ToMoveDown}"/>
             </StackLayout>
             <Button x:Name="ButtonLeft"
-                    WidthRequest="75" 
-                    HeightRequest="75"
-                    CornerRadius="30"
-                    BackgroundColor="Blue"
-                    BorderColor="Black"
-                    BorderWidth="5"
+                    Style="{StaticResource buttonStyle}"
                     Command="{Binding ToMoveLeft}"
                     Margin="20,0,0,0"/>
         </FlexLayout>

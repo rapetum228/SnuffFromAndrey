@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace SnuffFromAndrey
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : BaseViewModel
     {
         public ICommand ToMoveUp { get; set; }
         public ICommand ToMoveDown { get; set; }
@@ -33,11 +33,5 @@ namespace SnuffFromAndrey
         public Hero Hero { get; set; }
         public BattleField BattleField { get; private set; }
         
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-        }
     }
 }

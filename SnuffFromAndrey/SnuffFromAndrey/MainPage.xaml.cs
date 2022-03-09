@@ -11,8 +11,6 @@ namespace SnuffFromAndrey
     public partial class MainPage : ContentPage
     {
         private ViewModel _viewModel;
-
-        bool alive = true;
         public MainPage()
         {
             InitializeComponent();

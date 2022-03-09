@@ -7,18 +7,20 @@ namespace SnuffFromAndrey.Models
 {
     public class Enemy : Unit
     {
-        private BattleField _battleField;
-        public Enemy(BattleField battleField)
+        private const int _velocity = 10;
+        private ShotDirection _direction;
+        public Enemy(BattleField battleField):base(battleField)
         {
-            _battleField = battleField;
             Random random = new Random();
-            XOffset = random.Next(0, 400);
-            YOffset = random.Next(0, 530);
+            FaceSize = (int)(_battleField.HeightRequest * 0.08);
+            XOffset = random.Next(0, (int)_battleField.WidthRequest);
+            YOffset = random.Next(0, (int)_battleField.HeightRequest);
 
             Face = new Image
             {
-                Source = ImageSource.FromResource("SnuffFromAndrey.Images.DogEnemy.png"),
-                WidthRequest = 45,
+                Source = ImageSource.FromResource("SnuffFromAndrey.Images.FunnySmileEnemy.png"),
+                WidthRequest = FaceSize,
+                HeightRequest = FaceSize
             };
             XConstraint = Constraint.RelativeToParent((parent) =>
             {
@@ -28,6 +30,13 @@ namespace SnuffFromAndrey.Models
             {
                 return YOffset;
             });
+
+            Device.StartTimer(TimeSpan.FromSeconds(0.025), this.Move);
+        }
+
+        public bool Move()
+        {
+            
         }
     }
 }

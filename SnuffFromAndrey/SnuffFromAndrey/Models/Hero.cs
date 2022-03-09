@@ -8,15 +8,15 @@ namespace SnuffFromAndrey.Models
     public class Hero : Unit
     {
         public ShotDirection CurrentShotDirection { get; set; }
-        private BattleField _battleField;
-        public Hero(BattleField battleField)
+        public Hero(BattleField battleField) : base(battleField)
         {
-            _battleField = battleField;
+            FaceSize = (int)(_battleField.HeightRequest * 0.08);
 
             Face = new Image
             {
                 Source = ImageSource.FromResource("SnuffFromAndrey.Images.Hero.PNG"),
-                WidthRequest = 45,
+                WidthRequest = FaceSize,
+                HeightRequest = FaceSize
             };
             XConstraint = Constraint.RelativeToParent((parent) =>
             {
